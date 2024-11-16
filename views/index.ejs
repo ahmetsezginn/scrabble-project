@@ -1,0 +1,37 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Anasayfa</title>
+</head>
+<body>
+    <div id="inputSection">
+        <h2>İsimleri Girin</h2>
+        <textarea id="namesInput" placeholder="Her ismi yeni bir satıra yazın örnek:
+        
+ahmet
+mehmet
+selim
+kamil
+recep
+mervan
+yusuf"></textarea>
+        <button id="submitButton">Oluştur</button>
+        <button id="downloadButton">Resimi indir</button>
+    </div>
+    <div id="outputSection">
+        <h2>Sonuçlar</h2>
+        <div id="loading" style="display: none;">Yükleniyor...</div>
+        <div id="puzzleImageContainer">
+            <canvas id="puzzleCanvas"></canvas>
+        </div>
+        <div id="navigation">
+            <button id="prevButton">Önceki</button>
+            <span id="pageInfo">1/1</span>
+            <button id="nextButton">Sonraki</button>
+        </div>
+    </div>
+    <script type="module" src="/js/script.js"></script>
+</body>
+</html>
