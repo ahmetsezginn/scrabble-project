@@ -19,10 +19,8 @@ export const generatePuzzle = async (req, res) => {
     });
 
     try {
-        const requests = [];
-
-        for (let i = 0; i < 500; i++) {
-            const request = fetch('https://puzzle-maker.customwallarts.com/crossword_Options.cgi', {
+        const requests = Array.from({ length: 500 }, () =>
+            fetch('https://www.puzzle-maker.com/crossword_Design.cgi', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -61,10 +59,8 @@ export const generatePuzzle = async (req, res) => {
                     });
 
                     return finalOutputLines.join('\n');
-                });
-
-            requests.push(request);
-        }
+                })
+        );
 
         const responses = await Promise.all(requests);
 
@@ -75,6 +71,6 @@ export const generatePuzzle = async (req, res) => {
         
     } catch (error) {
         console.error('Hata oluştu:', error);
-        res.status(500).send('Bir hata oluştu');
+        res.status(500).json({ error: 'Bir hata oluştu' });
     }
 };
