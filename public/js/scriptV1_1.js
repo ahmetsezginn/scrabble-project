@@ -44,7 +44,7 @@ document.getElementById('submitButton').addEventListener('click', async () => {
     document.getElementById('navigation').style.display = 'none';
     
     try {
-        const response = await fetch('/puzzlev1_1', {
+        const response = await fetch('/V1-1/puzzlev1_1', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'

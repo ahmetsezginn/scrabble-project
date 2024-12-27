@@ -24,12 +24,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 // API rotalarını ayır
 app.use('/api/images', imageRouter);
 app.use('/puzzle', puzzleRouter);
-app.use('/puzzlev1_1', puzzleRouterV1_1); // Updated route
+app.use('/V1-1/puzzlev1_1', puzzleRouterV1_1); // Updated route
 
 app.get('/', (req, res) => {
   res.render('index');
 });
-app.get('/V1.1', (req, res) => {
+app.get('/V1-1', (req, res) => {
   res.render('scrableHomeV1_1');
 });
 app.listen(port, '0.0.0.0', () => {
