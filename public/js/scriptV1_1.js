@@ -3,12 +3,12 @@ import { createImageGrid } from './convertPng.js';
 
 let currentPuzzles = [];
 let currentIndex = 0;
-let imageFolder = 'images/letter_1'; // Varsayılan klasör
+let imageFolder = './images/letter_1'; // Varsayılan klasör
 
 // Radio butonları için event listener ekle
 document.querySelectorAll('input[name="letter"]').forEach(radio => {
     radio.addEventListener('change', (e) => {
-        imageFolder = `images/${e.target.value}`;
+        imageFolder = `./images/${e.target.value}`;
         // Eğer canvas'ta gösterilen bir bulmaca varsa, yeni harflerle tekrar çiz
         if (currentPuzzles.length > 0) {
             displayCurrentPuzzle();
