@@ -1,4 +1,3 @@
-// public/js/convertPng.js
 export async function createImageGrid(dataOutput, imageFolder, canvasElement, maxSize = 800) {
     const lines = dataOutput.trim().split('\n');
     const gridHeight = lines.length;
@@ -23,41 +22,29 @@ export async function createImageGrid(dataOutput, imageFolder, canvasElement, ma
 
     const totalWidth = gridWidth * imageWidth;
     const totalHeight = gridHeight * imageHeight;
+    const scale = Math.max(Math.min(maxSize / totalWidth, maxSize / totalHeight, 1), 0.1);
 
-    // Maksimum boyutu aşmamak için ölçeklendir
-    const scale = Math.min(maxSize / totalWidth, maxSize / totalHeight, 1);
-
-    // Canvas boyutlarını ayarla
     canvasElement.width = totalWidth * scale;
     canvasElement.height = totalHeight * scale;
     const ctx = canvasElement.getContext('2d');
     ctx.scale(scale, scale);
 
-    // Görüntüleri canvas'a çiz
     for (let y = 0; y < lines.length; y++) {
         const line = lines[y];
         const chars = line.trim().split(/\s+/);
         for (let x = 0; x < chars.length; x++) {
             const char = chars[x];
-            if (char !== '-' && images[char]) {
+            if (char !== '-' && images[char] !== null) {
                 ctx.drawImage(images[char], x * imageWidth, y * imageHeight, imageWidth, imageHeight);
             }
         }
     }
 }
-async function saveImageToServer(imageDataURL, index) {
-    const response = await fetch('/api/images/save', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ imageData: imageDataURL, index })
-    });
-    return response;
-}
+
 function loadImages(charsUsed, imageFolder) {
     const promises = [];
     const images = {};
+    const missingChars = [];
 
     charsUsed.forEach(char => {
         const img = new Image();
@@ -69,24 +56,35 @@ function loadImages(charsUsed, imageFolder) {
             img.onerror = () => {
                 console.warn(`Warning: Image for character '${char}' not found at ${imageFolder}/${char}.png`);
                 images[char] = null;
+                missingChars.push(char);
                 resolve();
             };
         });
-        img.src = `${imageFolder}/${char}.png`;
+        img.src = `${imageFolder}/${char.toUpperCase()}.png`;
         promises.push(imgPromise);
     });
 
-    return Promise.all(promises).then(() => images);
+    return Promise.all(promises).then(() => {
+        if (missingChars.length > 0) {
+            console.error(`The following images were not found: ${missingChars.join(', ')}`);
+        }
+        return images;
+    });
 }
 
 function getImageDimensions(images) {
     let imageWidth = 0, imageHeight = 0;
     for (let char in images) {
         if (images[char]) {
-            imageWidth = images[char].width;
-            imageHeight = images[char].height;
+            imageWidth = images[char].width || 50;
+            imageHeight = images[char].height || 50;
             break;
         }
+    }
+    if (imageWidth === 0 || imageHeight === 0) {
+        console.error('No valid image dimensions found. Using default values.');
+        imageWidth = 50;
+        imageHeight = 50;
     }
     return { imageWidth, imageHeight };
 }
