@@ -1,12 +1,12 @@
-<!-- views/index.ejs -->
+<!-- views/scrableHomeV1_1.ejs -->
 <!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="/css/style.css">
-    <title>Scrabble</title>
+    <title>Anasayfa</title>
 </head>
 <body>
-    <nav><a href="/V1.1">yeni version burada</a></nav>
+    <nav><a href="/">eski version burada</a></nav>
     <div id="inputSection">
         <h2>İsimleri Girin</h2>
         <textarea id="namesInput" placeholder="Her ismi yeni bir satıra yazın örnek:
@@ -18,6 +18,10 @@ kamil
 recep
 mervan
 yusuf"></textarea>
+        <label for="width">width:</label>
+        <input type="number" id="widthInput" name="width" placeholder="width type inc">
+        <label for="height">height:</label>
+        <input type="number" id="heightInput" name="height" placeholder="height type inc">
         <button id="submitButton">Oluştur</button>
         <button id="downloadButton">Resimi indir</button>
     </div>
@@ -56,6 +60,6 @@ yusuf"></textarea>
             <button id="nextButton">Sonraki</button>
         </div>
     </div>
-    <script type="module" src="/js/script.js"></script>
+    <script type="module" src="/js/scriptV1_1.js"></script>
 </body>
 </html>
