@@ -3,27 +3,27 @@
 <html>
 <head>
     <link rel="stylesheet" href="/css/style.css">
-    <title>Anasayfa</title>
+    <title>Home</title>
 </head>
 <body>
-    <nav><a href="/">eski version burada</a></nav>
+    <nav><a href="/">Old Version Here</a></nav>
     <div id="inputSection">
-        <h2>İsimleri Girin</h2>
-        <textarea id="namesInput" placeholder="Her ismi yeni bir satıra yazın örnek:
+        <h2>Enter Names</h2>
+        <textarea id="namesInput" placeholder="Enter each name on a new line, example:
         
-ahmet
-mehmet
-selim
-kamil
-recep
-mervan
-yusuf"></textarea>
+john
+mary
+james
+sarah
+michael
+emma
+david"></textarea>
         <label for="width">width:</label>
         <input type="number" id="widthInput" name="width" placeholder="width type inc">
         <label for="height">height:</label>
         <input type="number" id="heightInput" name="height" placeholder="height type inc">
-        <button id="submitButton">Oluştur</button>
-        <button id="downloadButton">Resimi indir</button>
+        <button id="submitButton">Generate</button>
+        <button id="downloadButton">Download Image</button>
     </div>
     <div id="letter-type">
         <label>
@@ -55,15 +55,15 @@ yusuf"></textarea>
         <img src="images/letter_4/A.png" alt="" width="1px" height="1px">
     </div>
     <div id="outputSection">
-        <h2>Sonuçlar</h2>
-        <div id="loading" style="display: none;">Yükleniyor...</div>
+        <h2>Results</h2>
+        <div id="loading" style="display: none;">Loading...</div>
         <div id="puzzleImageContainer">
             <canvas id="puzzleCanvas"></canvas>
         </div>
         <div id="navigation">
-            <button id="prevButton">Önceki</button>
+            <button id="prevButton">Previous</button>
             <span id="pageInfo">1/1</span>
-            <button id="nextButton">Sonraki</button>
+            <button id="nextButton">Next</button>
         </div>
     </div>
     <script type="module" src="/js/scriptV1_1.js"></script>

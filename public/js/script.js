@@ -3,13 +3,13 @@ import { createImageGrid } from './convertPng.js';
 
 let currentPuzzles = [];
 let currentIndex = 0;
-let imageFolder = '/images/letter_1'; // Varsayılan klasör
+let imageFolder = '/images/letter_1'; // Default folder
 
-// Radio butonları için event listener ekle
+// Add event listener for radio buttons
 document.querySelectorAll('input[name="letter"]').forEach(radio => {
     radio.addEventListener('change', (e) => {
         imageFolder = `/images/${e.target.value}`;
-        // Eğer canvas'ta gösterilen bir bulmaca varsa, yeni harflerle tekrar çiz
+        // If there's a puzzle displayed on canvas, redraw with new letters
         if (currentPuzzles.length > 0) {
             displayCurrentPuzzle();
         }
@@ -56,21 +56,21 @@ document.getElementById('submitButton').addEventListener('click', async () => {
             currentIndex = 0;
             
             
-            // Yükleniyor mesajını gizle
+            // Hide loading message
             loading.style.display = 'none';
             document.getElementById('puzzleCanvas').style.display = 'block';
             document.getElementById('navigation').style.display = 'flex';
             
-            // İlk bulmacayı göster
+            // Display first puzzle
             displayCurrentPuzzle();
             updateNavigation();
         } else {
             const errorText = await response.text();
-            throw new Error('Sunucu hatası: ' + errorText);
+            throw new Error('Server error: ' + errorText);
         }
     } catch (error) {
-        console.error('Hata:', error);
-        loading.textContent = 'Bir hata oluştu: ' + error.message;
+        console.error('Error:', error);
+        loading.textContent = 'An error occurred: ' + error.message;
     }
 });
 
