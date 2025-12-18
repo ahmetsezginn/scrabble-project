@@ -1,68 +1,117 @@
-# Scrable Pub
+# Scrabble Project
 
-Bu proje, kullanıcıların kelime bulmacaları oluşturmasına ve düzenlemesine olanak tanıyan bir web uygulamasıdır. Kullanıcılar, bulmacalarını özelleştirebilir, arka plan resimleri ekleyebilir ve bulmacalarını kaydedebilirler.
+A web application that allows users to create and customize crossword puzzles. Users can customize their puzzles, add background images, and save their creations.
 
-## Kurulum
+## 🚀 Quick Start
 
-Projeyi çalıştırmak için aşağıdaki adımları izleyin:
+### Prerequisites
 
-1. Depoyu klonlayın:
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [Python](https://www.python.org/) (v3.8 or higher)
+
+### Installation
+
+1. Clone the repository:
     ```sh
-    git clone <repository-url>
-    cd scrable-pub
+    git clone https://github.com/ahmetsezginn/scrabble-project.git
+    cd scrabble-project
     ```
 
-2. Gerekli bağımlılıkları yükleyin:
+2. Run the setup script:
+
+    **Windows:**
     ```sh
-    npm install
+    setup.bat
     ```
 
-3. Projeyi başlatın:
+    **Linux/Mac:**
     ```sh
-    npm start
+    chmod +x setup.sh
+    ./setup.sh
     ```
 
-## Kullanım
+    This will:
+    - Create a Python virtual environment
+    - Install Python dependencies
+    - Install Node.js dependencies
 
-Uygulama başlatıldıktan sonra, tarayıcınızda `http://localhost:3000` adresine giderek uygulamayı kullanabilirsiniz.
+### Running the Application
 
-### Özellikler
+**Windows:**
+```sh
+python run.py
+```
+or double-click `run.bat`
 
-- **Kelime Bulmacası Düzenleme**: Kullanıcılar bulmacalarını düzenleyebilir, ipuçlarını ve cevapları değiştirebilir.
-- **Özelleştirme Seçenekleri**: Kullanıcılar bulmacalarını özelleştirebilir, arka plan resimleri ekleyebilir ve bulmaca kontrastını ayarlayabilir.
-- **Görüntü Kaydetme**: Kullanıcılar oluşturdukları bulmacaları kaydedebilir ve daha sonra kullanmak üzere saklayabilirler.
+This will start both the Python API server and the Node.js web server, and automatically open the application in your browser.
 
-## Proje Yapısı
+## 📖 Usage
 
-- `controllers/`: Uygulama mantığını yöneten kontrolörler.
-  - `imageController.js`
-  - `puzzleController.js`
-- `public/`: Statik dosyalar (CSS, JS, görüntüler).
-  - `css/`
-  - `images/`
-  - `js/`
-    - `convertPng.js`
-    - `script.js`
-- `routers/`: Uygulama rotalarını yöneten dosyalar.
-  - `imageRouter.js`
-  - `puzzleRouter.js`
-- `views/`: EJS şablon dosyaları.
-  - `index.ejs`
-  - `puzzle.ejs`
-- `server.js`: Uygulamanın ana giriş noktası.
+After starting the application, navigate to `http://localhost:3001` in your browser.
 
-## Bağımlılıklar
+### Features
 
-- `canvas`: Canvas API'sini Node.js ortamında kullanmak için.
-- `ejs`: Sunucu tarafında HTML şablonları oluşturmak için.
-- `express`: Web sunucusu oluşturmak için.
-- `node-fetch`: HTTP istekleri yapmak için.
-- `request`: HTTP istekleri yapmak için.
+- **Crossword Puzzle Editor**: Create and edit crossword puzzles with custom clues and answers
+- **Customization Options**: Add background images and adjust puzzle contrast
+- **Image Export**: Save your puzzles as images for later use
+- **Multiple Letter Styles**: Choose from 5 different letter tile designs
 
-## Katkıda Bulunma
+## 📁 Project Structure
 
-Katkıda bulunmak isterseniz, lütfen bir pull request gönderin veya bir issue açın.
+```
+scrabble-project/
+├── controllers/           # Application logic controllers
+│   ├── imageController.js
+│   ├── puzzleController.js
+│   └── puzzleControllerV1_1.js
+├── crossword_api-main/    # Python crossword generation API
+│   ├── main.py
+│   ├── crossword.py
+│   └── requirements.txt
+├── public/                # Static files
+│   ├── css/
+│   ├── images/
+│   └── js/
+├── routers/               # Express route handlers
+│   ├── imageRouter.js
+│   ├── puzzleRouter.js
+│   └── puzzleRouterV1_1.js
+├── views/                 # EJS template files
+│   ├── index.ejs
+│   └── scrableHomeV1_1.ejs
+├── server.js              # Main Node.js entry point
+├── run.py                 # Startup script (Python)
+├── run.bat                # Startup script (Windows)
+├── setup.bat              # Installation script (Windows)
+└── setup.sh               # Installation script (Linux/Mac)
+```
 
-## Lisans
+## 🛠️ Tech Stack
 
-Bu proje [ISC Lisansı](LICENSE) ile lisanslanmıştır.
+**Backend:**
+- Node.js with Express.js
+- Python with FastAPI
+
+**Frontend:**
+- EJS (Embedded JavaScript templates)
+- Vanilla JavaScript
+- CSS
+
+**Dependencies:**
+- `canvas` - Canvas API for Node.js
+- `ejs` - Server-side HTML templating
+- `express` - Web server framework
+- `node-fetch` - HTTP requests
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request or open an Issue.
+
+## 📄 License
+
+This project is licensed under the [ISC License](LICENSE).
+
+## 👤 Author
+
+**Ahmet Sezgin**
+- GitHub: [@ahmetsezginn](https://github.com/ahmetsezginn)
