@@ -16,3 +16,9 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
+# Local run scripts
+run.py
+run.bat
+run.txt
+start.sh

@@ -17,37 +17,51 @@ A web application that allows users to create and customize crossword puzzles. U
     cd scrabble-project
     ```
 
-2. Run the setup script:
+2. Create and activate Python virtual environment:
 
     **Windows:**
     ```sh
-    setup.bat
+    python -m venv venv
+    venv\Scripts\activate
     ```
 
     **Linux/Mac:**
     ```sh
-    chmod +x setup.sh
-    ./setup.sh
+    python -m venv venv
+    source venv/bin/activate
     ```
 
-    This will:
-    - Create a Python virtual environment
-    - Install Python dependencies
-    - Install Node.js dependencies
+3. Install Python dependencies:
+    ```sh
+    pip install -r crossword_api-main/requirements.txt
+    ```
+
+4. Install Node.js dependencies:
+    ```sh
+    npm install
+    ```
 
 ### Running the Application
 
-**Windows:**
-```sh
-python run.py
-```
-or double-click `run.bat`
+You need to run **two servers** in separate terminals:
 
-This will start both the Python API server and the Node.js web server, and automatically open the application in your browser.
+**Terminal 1 - Python API Server:**
+```sh
+# Activate virtual environment first
+# Windows: venv\Scripts\activate
+# Linux/Mac: source venv/bin/activate
+
+python crossword_api-main/main.py
+```
+
+**Terminal 2 - Node.js Web Server:**
+```sh
+node server.js
+```
+
+After both servers are running, open your browser and navigate to `http://localhost:3001`
 
 ## 📖 Usage
-
-After starting the application, navigate to `http://localhost:3001` in your browser.
 
 ### Features
 
@@ -80,8 +94,6 @@ scrabble-project/
 │   ├── index.ejs
 │   └── scrableHomeV1_1.ejs
 ├── server.js              # Main Node.js entry point
-├── run.py                 # Startup script (Python)
-├── run.bat                # Startup script (Windows)
 ├── setup.bat              # Installation script (Windows)
 └── setup.sh               # Installation script (Linux/Mac)
 ```
