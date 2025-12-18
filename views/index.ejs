@@ -1,0 +1,61 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Scrabble</title>
+</head>
+<body>
+    <nav><a href="/V1-1">yeni version burada</a></nav>
+    <div id="inputSection">
+        <h2>İsimleri Girin</h2>
+        <textarea id="namesInput" placeholder="Her ismi yeni bir satıra yazın örnek:
+        
+ahmet
+mehmet
+selim
+kamil
+recep
+mervan
+yusuf"></textarea>
+        <button id="submitButton">Oluştur</button>
+        <button id="downloadButton">Resimi indir</button>
+    </div>
+    <div id="letter-type">
+        <label>
+            <input type="radio" name="letter" value="letter_1">
+            <img src="images/letter_1.png" alt="letter_1" class="letter-style">
+        </label>
+        <label>
+            <input type="radio" name="letter" value="letter_2">
+            <img src="images/letter_2.png" alt="letter_2" class="letter-style">
+        </label>
+        <label>
+            <input type="radio" name="letter" value="letter_3">
+            <img src="images/letter_3.png" alt="letter_3" class="letter-style">
+        </label>
+        <label>
+            <input type="radio" name="letter" value="letter_4">
+            <img src="images/letter_4.png" alt="letter_4" class="letter-style">
+        </label>
+        <label>
+            <input type="radio" name="letter" value="letter_5">
+            <img src="images/letter_5.png" alt="letter_5" class="letter-style">
+        </label>
+    </div>
+    
+    <div id="outputSection">
+        <h2>Sonuçlar</h2>
+        <div id="loading" style="display: none;">Yükleniyor...</div>
+        <div id="puzzleImageContainer">
+            <canvas id="puzzleCanvas"></canvas>
+        </div>
+        <div id="navigation">
+            <button id="prevButton">Önceki</button>
+            <span id="pageInfo">1/1</span>
+            <button id="nextButton">Sonraki</button>
+        </div>
+    </div>
+    <script type="module" src="/js/script.js"></script>
+</body>
+</html>

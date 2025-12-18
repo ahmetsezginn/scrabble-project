@@ -1,0 +1,7 @@
+cd "C:\Users\szgnm\OneDrive\Masaüstü\z_ahmet yazılım\scrabble"
+ayrı bir cmd penceresi açılacak
+./venv/scripts/activate
+python crossword_api-main/main.py
+ayrı bir cmd penceresi açılacak
+cd "C:\Users\szgnm\OneDrive\Masaüstü\z_ahmet yazılım\scrabble"
+node server.js
